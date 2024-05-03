@@ -7,6 +7,7 @@ import Feature from "./feature";
 import MobileConvenience from "./mobile-convenience";
 import Testimonials from "./testimonials";
 import Faqs from "./faqs";
+import About from "./about";
 
 export default function Campaign() {
   return (
@@ -17,6 +18,7 @@ export default function Campaign() {
       <MobileConvenience />
       <Testimonials />
       <Faqs />
+      <About />
       <Footer />
     </>
   );
