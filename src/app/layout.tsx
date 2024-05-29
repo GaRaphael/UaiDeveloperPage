@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { FixedPlugin } from "@/components";
 import { Layout } from "@/components";
+import favicon from './../../public/suit_favicon.png'
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -11,9 +12,9 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Uai Developer",
+  title: "Lotus",
   description:
-    "Sua aplicação a um clique de distância.",
+    "",
 };
 
 export default function RootLayout({
@@ -31,7 +32,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
-        <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+        <link rel="shortcut icon" href={favicon.src} type="image/png" />
       </head>
       <body className={roboto.className}>
         <Layout>
