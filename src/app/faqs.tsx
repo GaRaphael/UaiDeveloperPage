@@ -35,12 +35,17 @@ export function Faqs() {
     <section className="px-8 py-20">
       <div className="container max-w-6xl mx-auto">
         <div className="text-center">
-          <Typography variant="h1" color="blue-gray" className="mb-4">
+          <Typography variant="h1" color="blue-gray" className="mb-4" placeholder={"Lótus Alfaiataria"}
+            onPointerEnterCapture={() => { }}
+            onPointerLeaveCapture={() => { }}>
             Perguntas Frequentes
           </Typography>
           <Typography
             variant="lead"
             className="mx-auto mb-24 !text-gray-500 lg:w-3/5"
+            placeholder={"Lótus Alfaiataria"}
+            onPointerEnterCapture={() => { }}
+            onPointerLeaveCapture={() => { }}
           >
             Aqui estão algumas perguntas frequentes que nossos clientes fazem.
           </Typography>
@@ -48,12 +53,19 @@ export function Faqs() {
 
         <div className="grid gap-20 md:grid-cols-1 lg:grid-cols-3">
           {FAQS.map(({ title, desc }) => (
-            <Card key={title} shadow={false} color="transparent">
-              <Typography color="blue-gray" className="pb-6" variant="h4">
+            <Card key={title} shadow={false} color="transparent"
+              placeholder={"Lótus Alfaiataria"}
+              onPointerEnterCapture={() => { }}
+              onPointerLeaveCapture={() => { }}>
+              <Typography color="blue-gray" className="pb-6" variant="h4" placeholder={"Lótus Alfaiataria"}
+                onPointerEnterCapture={() => { }}
+                onPointerLeaveCapture={() => { }}>
                 {title}
               </Typography>
               <div className="pt-2">
-                <Typography className="font-normal !text-gray-500">
+                <Typography className="font-normal !text-gray-500" placeholder={"Lótus Alfaiataria"}
+                  onPointerEnterCapture={() => { }}
+                  onPointerLeaveCapture={() => { }}>
                   {desc}
                 </Typography>
               </div>

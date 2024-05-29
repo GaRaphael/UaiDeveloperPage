@@ -15,18 +15,34 @@ export function TestimonialCard({
   title,
 }: TestimonialCardProps) {
   return (
-    <Card shadow={false} className="items-center text-center">
-      <CardBody>
-        <Avatar src={img} className="mb-3" alt={client} size="lg" />
-        <Typography variant="h6" color="blue-gray">
+    <Card
+      shadow={false}
+      className="items-center text-center"
+      placeholder={"Lótus Alfaiataria"}
+      onPointerEnterCapture={() => { }}
+      onPointerLeaveCapture={() => { }}>
+      <CardBody
+        placeholder={"Lótus Alfaiataria"}
+        onPointerEnterCapture={() => { }}
+        onPointerLeaveCapture={() => { }}>
+        <Typography variant="h6" color="blue-gray"
+          placeholder={"Lótus Alfaiataria"}
+          onPointerEnterCapture={() => { }}
+          onPointerLeaveCapture={() => { }}>
           {client}
         </Typography>
-        <Typography variant="small" className="mb-3 font-medium !text-gray-700">
+        <Typography variant="small" className="mb-3 font-medium !text-gray-700"
+          placeholder={"Lótus Alfaiataria"}
+          onPointerEnterCapture={() => { }}
+          onPointerLeaveCapture={() => { }}>
           {title}
         </Typography>
         <Typography
           variant="paragraph"
           className="mb-5 font-normal !text-gray-500"
+          placeholder={"Lótus Alfaiataria"}
+          onPointerEnterCapture={() => { }}
+          onPointerLeaveCapture={() => { }}
         >
           &quot;{feedback}&quot;
         </Typography>

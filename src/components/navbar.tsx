@@ -7,6 +7,9 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import logo from "../../public/suit_favicon.png";
+import Link from 'next/link';
+
 
 interface NavItemProps {
   children: React.ReactNode;
@@ -21,6 +24,9 @@ function NavItem({ children, href }: NavItemProps) {
         target={href ? "_blank" : "_self"}
         variant="small"
         className="font-medium"
+        placeholder={"Lótus Alfaiataria"}
+        onPointerEnterCapture={() => { }}
+        onPointerLeaveCapture={() => { }}
       >
         {children}
       </Typography>
@@ -62,53 +68,101 @@ export function Navbar() {
       fullWidth
       shadow={false}
       blurred={false}
-      color={isScrolling ? "white" : "transparent"}
+      color={"white"}
       className="fixed top-0 z-50 border-0"
-      placeholder={"Uai Developer"}
+      placeholder={"Lótus Alfaiataria"}
       onPointerEnterCapture={() => { }}
       onPointerLeaveCapture={() => { }}
     >
-      <div className="container mx-auto flex items-center justify-between">
-        <Typography
-          as="a"
-          href="https://www.material-tailwind.com"
-          target="_blank"
-          variant="h3"
-          color={isScrolling ? "gray" : "white"}
+      <div className="container mx-auto flex items-center ">
+        <div style={
+          {
+            width: "50px",
+            height: "50px",
+            borderRadius: "50%",
+            backgroundColor: "white",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginRight: "30px"
+          }
+        }
         >
-          Uai Developer
-        </Typography>
-        <ul
-          className={`ml-10 hidden items-center gap-6 lg:flex ${isScrolling ? "text-gray-900" : "text-white"
-            }`}
-        >
-        </ul>
-        <div className="hidden gap-2 lg:flex lg:items-center">
-          <IconButton
-            variant="text"
-            color={isScrolling ? "gray" : "white"}
-            size="lg"
+          <img src={logo.src} alt="Logo" />
+        </div>
+        <Link href="/" passHref>
+          <Typography
+            as="a"
+            target="_blank"
+            variant="h3"
+            color={isScrolling ? "gray" : "black"}
+            placeholder={"Lótus Alfaiataria"}
+            onPointerEnterCapture={() => { }}
+            onPointerLeaveCapture={() => { }}
           >
-            <i className="fa-brands fa-twitter text-base" />
-          </IconButton>
-          <IconButton
-            variant="text"
-            color={isScrolling ? "gray" : "white"}
-            size="lg"
+            Lotus Alfaiataria
+          </Typography>
+        </Link>
+        <div className="row-auto ml-[450px]">
+          <ul
+            className={`hidden items-center row-auto gap-6 lg:flex ${isScrolling ? "text-gray-900" : "text-white"}`}
           >
-            <i className="fa-brands fa-facebook text-base" />
-          </IconButton>
-          <IconButton
-            variant="text"
-            color={isScrolling ? "gray" : "white"}
-            size="lg"
-          >
-            <i className="fa-brands fa-instagram text-base" />
-          </IconButton>
+            <Typography
+              style={{
+                display: "inline-block",
+                marginLeft: "30px",
+              }}
+              as="a"
+              href="/"
+              target="_blank"
+              placeholder={"Lótus Alfaiataria"}
+              onPointerEnterCapture={() => { }}
+              onPointerLeaveCapture={() => { }}
+              variant="h5"
+              color={isScrolling ? "gray" : "black"}
+            >
+              <NavItem href="/pageProduct">Produtos</NavItem>
+            </Typography>
+            <Typography
+              style={{
+                display: "inline-block",
+                marginLeft: "30px",
+              }}
+              as="a"
+              href="/"
+              target="_blank"
+              placeholder={"Lótus Alfaiataria"}
+              onPointerEnterCapture={() => { }}
+              onPointerLeaveCapture={() => { }}
+              variant="h5"
+              color={isScrolling ? "gray" : "black"}
+            >
+              <NavItem href="/category1">Categorias</NavItem>
+            </Typography>
+            <Typography
+              style={{
+                display: "inline-block",
+                marginLeft: "30px",
+              }}
+              as="a"
+              href="/"
+              target="_blank"
+              placeholder={"Lótus Alfaiataria"}
+              onPointerEnterCapture={() => { }}
+              onPointerLeaveCapture={() => { }}
+              variant="h5"
+              color={isScrolling ? "gray" : "black"}
+            >
+              <NavItem href="/category1">Sobre</NavItem>
+            </Typography>
+          </ul>
         </div>
         <IconButton
           variant="text"
           color={isScrolling ? "gray" : "white"}
+          placeholder={"Lótus Alfaiataria"}
+          onPointerEnterCapture={() => { }}
+          onPointerLeaveCapture={() => { }}
           onClick={handleOpen}
           className="ml-auto inline-block lg:hidden"
         >
@@ -122,24 +176,40 @@ export function Navbar() {
       <Collapse open={open}>
         <div className="container mx-auto mt-4 rounded-lg border-t border-blue-gray-50 bg-white px-6 py-5">
           <div className="mt-4 flex items-center gap-2">
-            <IconButton variant="text" color="gray" size="sm">
+            <IconButton variant="text" color="gray"
+              size="sm"
+              placeholder={"Lótus Alfaiataria"}
+              onPointerEnterCapture={() => { }}
+              onPointerLeaveCapture={() => { }}>
               <i className="fa-brands fa-twitter text-base" />
             </IconButton>
-            <IconButton variant="text" color="gray" size="sm">
+            <IconButton variant="text" color="gray"
+              size="sm"
+              placeholder={"Lótus Alfaiataria"}
+              onPointerEnterCapture={() => { }}
+              onPointerLeaveCapture={() => { }}
+            >
               <i className="fa-brands fa-facebook text-base" />
             </IconButton>
-            <IconButton variant="text" color="gray" size="sm">
+            <IconButton variant="text" color="gray" size="sm"
+              placeholder={"Lótus Alfaiataria"}
+              onPointerEnterCapture={() => { }}
+              onPointerLeaveCapture={() => { }}>
               <i className="fa-brands fa-instagram text-base" />
             </IconButton>
             <a href="https://www.material-tailwind.com/blocks" target="_blank">
-              <Button color="gray" size="sm" className="ml-auto">
+              <Button color="gray" size="sm" className="ml-auto"
+                placeholder={"Lótus Alfaiataria"}
+                onPointerEnterCapture={() => { }}
+                onPointerLeaveCapture={() => { }}
+              >
                 Blocks
               </Button>
             </a>
           </div>
         </div>
       </Collapse>
-    </MTNavbar>
+    </MTNavbar >
   );
 }
 

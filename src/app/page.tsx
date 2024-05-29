@@ -1,22 +1,18 @@
 // components
-import { Navbar, Footer } from "@/components";
+import { Navbar, Footer } from "../components";
 
 // sections
 import Hero from "./hero";
 import Feature from "./feature";
-import MobileConvenience from "./mobile-convenience";
-import Testimonials from "./testimonials";
-import Faqs from "./faqs";
+import Products from "./products";
 
-export default function Campaign() {
+export default function Landing() {
   return (
     <>
       <Navbar />
       <Hero />
       <Feature />
-      <MobileConvenience />
-      <Testimonials />
-      <Faqs />
+      <Products />
       <Footer />
     </>
   );

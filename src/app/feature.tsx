@@ -1,59 +1,39 @@
 "use client";
-
 import React from "react";
 import { Typography } from "@material-tailwind/react";
-
-import {
-  CursorArrowRaysIcon,
-  HeartIcon,
-  LightBulbIcon,
-  LockClosedIcon,
-} from "@heroicons/react/24/solid";
-
 import FeatureCard from "../components/feature-card";
-
-const FEATURES = [
-  {
-    icon: CursorArrowRaysIcon,
-    title: "Interface Dinâmica",
-    children:
-      "Acesse seu protótipo em qualquer lugar, a qualquer hora, com uma interface fácil de usar e amigável.",
-  },
-  {
-    icon: HeartIcon,
-    title: "Desenvolvimento Iterativo",
-    children:
-      "Expresse a sua ideia de forma eficaz e eficiente.",
-  },
-  {
-    icon: LockClosedIcon,
-    title: "Total Segurança e Privacidade",
-    children:
-      "Mantenha seus dados seguros e protegidos com a nossa plataforma de segurança de última geração.",
-  },
-  {
-    icon: LightBulbIcon,
-    title: "Acompanhamento de progresso personalizado",
-    children:
-      "Fique por dentro da jornada de implementação com acompanhamento de progresso e recomendações personalizadas para mantê-lo atualizado.",
-  },
-];
+import calca from "../../public/image/linha_calca.jpg";
+import casual from "../../public/image/linha_casual.png";
+import sapato from "../../public/image/linha_sapato.jpg";
 
 export function Features() {
   return (
-    <section className="py-28 px-4">
-      <div className="container mx-auto mb-20 text-center">
-        <Typography color="blue-gray" className="mb-2 font-bold uppercase">
-          Deixe a aplicação com a sua cara
-        </Typography>
-        <Typography variant="h1" color="blue-gray" className="mb-4">
-          Diversos recursos de personalização
+    <section className="">
+      <div className="container mx-auto mb-20 text-center" style={{marginTop: '60px'}}>
+        <Typography variant="h1" color="blue-gray" className="mb-4"
+          placeholder={"Lótus Alfaiataria"}
+          onPointerEnterCapture={() => { }}
+          onPointerLeaveCapture={() => { }}>
+          Categorias
         </Typography>
       </div>
-      <div className="container mx-auto grid max-w-6xl grid-cols-1 gap-4 gap-y-12 md:grid-cols-2">
-        {FEATURES.map((props, idx) => (
-          <FeatureCard key={idx} {...props} />
-        ))}
+      <div className="container mx-auto grid md:grid-cols-4">
+        <FeatureCard
+          image={casual.src}
+          description="Linha Casual"
+        />
+        <FeatureCard
+          image='https://www.chicprincess.com.br/wp-content/uploads/2023/03/blazer-feminino-slim-fit-acinturado-colorido-1.jpg'
+          description="Linha Feminina"
+        />
+        <FeatureCard
+          image={calca.src}
+          description="Linha de Calças"
+        />
+        <FeatureCard
+          image={sapato.src}
+          description="Sapatos e Acessórios"
+        />
       </div>
     </section>
   );
