@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 
 interface Product {
@@ -249,17 +250,19 @@ const ProductCard: React.FC<any> = ({ products, colors, sizes }) => {
                             {product.price}
                         </div>
 
-                        <button style={{
-                            marginTop: '10px',
-                            width: '100%',
-                            padding: '10px',
-                            backgroundColor: '#1C1C1C',
-                            color: 'white',
-                            fontWeight: 'bold',
-                            border: 'none',
-                            borderRadius: '4px',
-                            cursor: 'pointer'
-                        }}>
+                        <button
+                            onClick={() => window.location = '/product' as any}
+                            style={{
+                                marginTop: '10px',
+                                width: '100%',
+                                padding: '10px',
+                                backgroundColor: '#1C1C1C',
+                                color: 'white',
+                                fontWeight: 'bold',
+                                border: 'none',
+                                borderRadius: '4px',
+                                cursor: 'pointer'
+                            }}>
                             Comprar
                         </button>
 

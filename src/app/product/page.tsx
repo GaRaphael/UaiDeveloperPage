@@ -17,6 +17,9 @@ const sizes = [
   { name: 'M' },
   { name: 'G' },
   { name: 'GG' },
+  { name: 'GGG' },
+  { name: 'XGG' },
+  { name: 'XXG' },
 ];
 
 const price = 'R$ 99.99'

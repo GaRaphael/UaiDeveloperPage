@@ -19,7 +19,11 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ image, description }) => {
         <div className="relative mb-4 rounded-lg overflow-hidden image-wrapper">
           <img src={image} alt="Feature" className="image" />
           <div className="description">
-            <Typography variant="h4" color="white" onPointerEnterCapture={{}} onPointerLeaveCapture={{}} placeholder=''>
+            <Typography variant="h4" color="white" onPointerEnterCapture={{}} onPointerLeaveCapture={{}} placeholder=''
+              onClick={() => window.location = '/categories' as any}
+              style={{
+                cursor: 'pointer',
+              }}>
               {description}
             </Typography>
           </div>
