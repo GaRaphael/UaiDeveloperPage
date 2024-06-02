@@ -159,10 +159,9 @@ const ProductCard: React.FC<any> = ({ products, colors, sizes }) => {
             <div style={{
                 display: 'flex',
                 marginLeft: '50px',
-                overflowX: 'hidden',
                 flexWrap: 'wrap',
                 width: '1100px',
-                flex: 1
+
             }}>
                 {products.map((product: any, index: any) => (
                     <div key={index}

@@ -106,8 +106,7 @@ export default function AllProductCategories() {
         <div style={{
             display: 'flex',
             marginLeft: '200px',
-            marginTop: '200px',
-            overflowX: 'hidden',
+            marginTop: '200px'
         }}>
             <div>
                 <ProductCard products={products} colors={colors} sizes={sizes} />
