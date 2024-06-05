@@ -1,9 +1,11 @@
-// components
+import api from '../../../api/api';
+import showNotification from '../../components/extras/showNotification';
+import React, { useEffect, useState } from 'react';
 import { Footer, Navbar } from "../../components";
-
-// sections
 import ProductOverview from "../../components/product/productOverview";
 import data from '../../../public/data.json';
+
+
 
 const colors = [
   { name: 'Preto', hex: '#000000' },
@@ -25,11 +27,13 @@ const sizes = [
 const price = 'R$ 99.99'
 
 export default function ProductPage() {
+
+
   return (
     <>
       <main>
         <Navbar />
-        <div className="container mt-5">
+        <div>
           <ProductOverview
             colors={colors}
             images={data.products[0].images || []}

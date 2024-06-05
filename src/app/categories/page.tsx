@@ -8,11 +8,11 @@ import AllProductCategories from "../../components/product/allProductCategories"
 export default function Landing() {
   return (
     <>
-      <Navbar />
-      <div className="container mt-5">
+      {/* <Navbar /> */}
+      <div >
         <AllProductCategories />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

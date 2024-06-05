@@ -1,4 +1,7 @@
+'use client'
 /* eslint-disable no-unused-vars */
+
+
 import React, {
 	forwardRef,
 	FC,

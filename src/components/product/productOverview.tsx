@@ -119,7 +119,7 @@ export default function ProductOverview({
                                             border: '1px solid black'
                                         }}
                                     ></div>
-                                    <span>{color.name}</span>
+                                    
                                 </div>
                             ))}
                         </div>
@@ -153,9 +153,7 @@ export default function ProductOverview({
                                         width: '40px',
                                         height: '40px',
                                         border: '1px solid gray',
-                                        textAlign: 'center',
-                                        backgroundColor: '#CFCFCF',
-
+                                        textAlign: 'center'
                                     }}
                                 >
                                     <span>{size.name}</span>

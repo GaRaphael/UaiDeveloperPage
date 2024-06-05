@@ -1,3 +1,5 @@
+'use client'
+
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { FC, ReactNode, useContext } from 'react';

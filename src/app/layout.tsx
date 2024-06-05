@@ -1,9 +1,10 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import { FixedPlugin } from "@/components";
+import { FixedPlugin, Navbar, Footer } from "@/components";
 import { Layout } from "@/components";
 import favicon from './../../public/suit_favicon.png'
+
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -36,8 +37,10 @@ export default function RootLayout({
       </head>
       <body className={roboto.className}>
         <Layout>
+          <Navbar />
           {children}
           <FixedPlugin />
+          <Footer />
         </Layout>
       </body>
     </html>

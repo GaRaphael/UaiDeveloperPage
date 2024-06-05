@@ -74,7 +74,8 @@ export function Navbar() {
       onPointerEnterCapture={() => { }}
       onPointerLeaveCapture={() => { }}
     >
-      <div className="container mx-auto flex items-center ">
+
+<div className="container mx-auto flex items-center ">
         <div style={
           {
             width: "50px",
@@ -90,6 +91,8 @@ export function Navbar() {
         >
           <img src={logo.src} alt="Logo" />
         </div>
+
+{/* 
         <Link href="/" passHref>
           <Typography
             as="a"
@@ -102,8 +105,12 @@ export function Navbar() {
           >
             Lotus Alfaiataria
           </Typography>
-        </Link>
-        <div className="row-auto ml-[450px]">
+        </Link> */}
+
+
+
+
+        {/* <div className="row-auto ml-[450px]">
           <ul
             className={`hidden items-center row-auto gap-6 lg:flex ${isScrolling ? "text-gray-900" : "text-white"}`}
           >
@@ -123,6 +130,7 @@ export function Navbar() {
             >
               <NavItem href="/pageProduct">Produtos</NavItem>
             </Typography>
+
             <Typography
               style={{
                 display: "inline-block",
@@ -139,6 +147,7 @@ export function Navbar() {
             >
               <NavItem href="/category1">Categorias</NavItem>
             </Typography>
+
             <Typography
               style={{
                 display: "inline-block",
@@ -156,7 +165,11 @@ export function Navbar() {
               <NavItem href="/category1">Sobre</NavItem>
             </Typography>
           </ul>
-        </div>
+          
+        </div> */}
+
+
+
         <IconButton
           variant="text"
           color={isScrolling ? "gray" : "white"}
@@ -173,6 +186,11 @@ export function Navbar() {
           )}
         </IconButton>
       </div>
+
+
+
+
+
       <Collapse open={open}>
         <div className="container mx-auto mt-4 rounded-lg border-t border-blue-gray-50 bg-white px-6 py-5">
           <div className="mt-4 flex items-center gap-2">
@@ -210,6 +228,7 @@ export function Navbar() {
         </div>
       </Collapse>
     </MTNavbar >
+
   );
 }
 

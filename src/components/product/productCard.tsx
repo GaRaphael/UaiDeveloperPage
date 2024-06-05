@@ -1,275 +1,213 @@
-'use client'
-import React from 'react';
+"use client";
+
+import { Inter } from 'next/font/google';
+import ModalProductCategories from '../modals/categories/modalProductCategories';
 
 interface Product {
-    name: string;
+    model: string;
     image: any;
     price: string;
-    sizes: string[];
-    colors: { name: string; hex: string }[];
+    size: string;
+    color: string;
+    composition: string;
+    description: string;
 }
 
 interface Props {
     products: Product[];
-    colors: Color[];
-    sizes: string[];
 }
 
+// const ColorList: React.FC<any> = ({ products }) => {
 
-interface Color {
-    name: string;
-    hex: string;
-}
+//     return (
+//         <div>
+//             <hr style={{
+//                 border: '1px solid #454545',
+//                 width: '350px',
+//                 marginTop: '70px',
+//             }} />
 
-const ColorList: React.FC<any> = ({ colors }) => {
+//             <h2 style={{
+//                 marginTop: '10px',
+//                 fontSize: '23px',
+//                 fontWeight: '400',
+//                 textAlign: 'start',
+//                 fontFamily: 'Inter',
+//                 marginBottom: '30px',
+//             }}>
+//                 Cor
+//             </h2>
+
+//             <div style={{
+//                 display: 'flex',
+//                 flexWrap: 'wrap',
+//             }}>
+//                 {products?.map((color: any, index: any) => (
+//                     <div key={index}
+//                         style={{
+//                             display: 'flex',
+//                             alignItems: 'center',
+//                             marginBottom: '10px',
+//                             marginRight: '10px',
+//                         }}>
+//                         <div style={{
+//                             width: '40px',
+//                             height: '40px',
+//                             borderRadius: '50%',
+//                             backgroundColor: color,
+//                             border: '1px solid #D1D1D1'
+//                         }}>
+//                         </div>
+//                     </div>
+//                 ))}
+//             </div>
+//         </div>
+//     );
+// };
+
+// const SizeList: React.FC<any> = ({ product }) => {
+//     return (
+//         <div>
+//             <hr style={{
+//                 border: '1px solid #454545',
+//                 width: '350px',
+//                 marginTop: '50px',
+//                 marginBottom: '10px'
+//             }} />
+
+//             <h2 style={{
+//                 marginTop: '10px',
+//                 fontSize: '23px',
+//                 fontWeight: '400',
+//                 textAlign: 'start',
+//                 fontFamily: 'Inter',
+//                 marginBottom: '30px'
+//             }}>
+//                 Tamanho
+//             </h2>
+
+//             <div style={{
+//                 display: 'flex'
+//             }}>
+//                 {product?.map((size: any, index: any) => (
+//                     <div key={index}
+//                         style={{
+//                             display: 'flex',
+//                             alignItems: 'center',
+//                             justifyContent: 'center',
+//                             borderRadius: '25%',
+//                             margin: '5px',
+//                             width: '50px',
+//                             height: '50px',
+//                             border: '1px solid gray',
+//                             textAlign: 'center',
+//                         }}>
+//                         {size}
+//                     </div>
+//                 ))}
+//             </div>
+
+//             <hr style={{
+//                 border: '1px solid #454545',
+//                 width: '350px',
+//                 marginTop: '50px',
+//                 marginBottom: '10px'
+//             }} />
+
+//             <button style={{
+//                 marginTop: '50px',
+//                 width: '300px',
+//                 padding: '10px',
+//                 backgroundColor: '#1C1C1C',
+//                 color: 'white',
+//                 fontWeight: 'bold',
+//                 borderRadius: '4px',
+//                 cursor: 'pointer'
+//             }}>
+//                 Filtrar
+//             </button>
+
+//         </div>
+//     );
+// };
+
+// export { ColorList, SizeList };
+
+const ProductSizeBalls: React.FC<{ sizes: string }> = ({ sizes }) => {
+    // Dividindo a string de tamanhos em um array
+    const sizeArray = sizes.split(',').map((size) => size.trim());
+
     return (
-        <div>
-            <hr style={{
-                border: '1px solid #454545',
-                width: '350px',
-                marginTop: '70px',
-            }} />
-
-            <h2 style={{
-                marginTop: '10px',
-                fontSize: '23px',
-                fontWeight: '400',
-                textAlign: 'start',
-                fontFamily: 'Inter',
-                marginBottom: '30px',
-            }}>
-                Cor
-            </h2>
-
-            <div style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-            }}>
-                {colors.map((color: any, index: any) => (
-                    <div key={index}
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            marginBottom: '10px',
-                            marginRight: '10px',
-                        }}>
-                        <div style={{
-                            width: '40px',
-                            height: '40px',
-                            borderRadius: '50%',
-                            backgroundColor: color.hex,
-                            border: '1px solid #D1D1D1'
-                        }}>
-                        </div>
-                    </div>
-                ))}
-            </div>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px' }}>
+            {/* Mapeando o array de tamanhos e renderizando uma bola para cada tamanho */}
+            {sizeArray.map((size, index) => (
+                <div
+                    key={index}
+                    style={{
+                        width: '35px',
+                        height: '35px',
+                        borderRadius: '50%',
+                        backgroundColor: '#F6F6F6',
+                        border: '1px solid #D1D1D1',
+                        textAlign: 'center',
+                        lineHeight: '40px',
+                        margin: '5px',
+                        marginBottom: '10px',
+                    }}
+                >
+                    {size}
+                </div>
+            ))}
         </div>
     );
 };
 
-const SizeList: React.FC<any> = ({ sizes }) => {
+const ProductCard: React.FC<Props> = ({ products }) => {
     return (
-        <div>
-            <hr style={{
-                border: '1px solid #454545',
-                width: '350px',
-                marginTop: '50px',
-                marginBottom: '10px'
-            }} />
+        <>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+                {products?.map((product, index) => (
+                    <div key={index} style={{ borderRadius: '8px', width: '300px', margin: '30px', padding: '16px', backgroundColor: '#F6F6F6' }}>
 
-            <h2 style={{
-                marginTop: '10px',
-                fontSize: '23px',
-                fontWeight: '400',
-                textAlign: 'start',
-                fontFamily: 'Inter',
-                marginBottom: '30px'
-            }}>
-                Tamanho
-            </h2>
+                        <img src={product.image} alt={product.model} style={{ width: '100%', borderRadius: '8px 8px 0 0' }} />
 
-            <div style={{
-                display: 'flex'
-            }}>
-                {sizes.map((size: any, index: any) => (
-                    <div key={index}
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderRadius: '25%',
-                            margin: '5px',
-                            width: '50px',
-                            height: '50px',
-                            border: '1px solid gray',
-                            textAlign: 'center',
-                        }}>
-                        {size}
-                    </div>
-                ))}
-            </div>
+                        <div style={{ padding: '10px 0', textAlign: 'center' }}>
 
-            <hr style={{
-                border: '1px solid #454545',
-                width: '350px',
-                marginTop: '50px',
-                marginBottom: '10px'
-            }} />
+                            <h3 style={{
+                                fontFamily: "Inter",
+                                fontSize: '23px',
+                                fontWeight: '600',
+                            }}>{product.model}</h3>
 
-            <button style={{
-                marginTop: '50px',
-                width: '300px',
-                padding: '10px',
-                backgroundColor: '#1C1C1C',
-                color: 'white',
-                fontWeight: 'bold',
-                borderRadius: '4px',
-                cursor: 'pointer'
-            }}>
-                Filtrar
-            </button>
+                            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <div style={{ width: '20px', height: '20px', borderRadius: '50%', backgroundColor: product.color, margin: '5px', border: '1px solid #D1D1D1' }} />
+                            </div>
 
-        </div>
-    );
-};
+                            <ProductSizeBalls sizes={product.size} />
 
-export { ColorList, SizeList };
+                            <p style={{
+                                fontFamily: "Inter",
+                                fontSize: '16px',
+                                fontWeight: '300',
+                            }}>{product.composition}</p>
 
-const ProductCard: React.FC<any> = ({ products, colors, sizes }) => {
-
-    return (
-
-        <div style={{
-            display: 'flex',
-            width: '100%',
-        }}>
-
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='' />
-            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
-
-            <div style={{
-                width: '350px',
-            }}>
-                <ColorList colors={colors} />
-                <SizeList sizes={sizes} />
-            </div>
-
-            <div style={{
-                display: 'flex',
-                marginLeft: '50px',
-                flexWrap: 'wrap',
-                width: '1100px',
-
-            }}>
-                {products.map((product: any, index: any) => (
-                    <div key={index}
-                        style={{
-                            borderRadius: '8px',
-                            width: '300px',
-                            height: '540px',
-                            padding: '16px',
-                            boxSizing: 'border-box',
-                            backgroundColor: '#F6F6F6',
-                            marginLeft: '60px',
-                            marginTop: '60px',
-                        }}>
-
-                        <img src={product.image} alt={product.name}
-                            style={{
-                                width: '100%',
-                                height: 'auto',
-                                borderRadius: '8px 8px 8px 8px'
-                            }}
-                        />
-
-                        <div style={{
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            marginTop: '10px',
-                            justifyContent: 'center'
-                        }}>
-                            {product.colors.map((color: any, colorIndex: any) => (
-                                <div key={colorIndex}
-                                    style={{
-                                        width: '20px',
-                                        height: '20px',
-                                        borderRadius: '50%',
-                                        backgroundColor: color.hex,
-                                        margin: '5px',
-                                        border: '1px solid #D1D1D1'
-                                    }}
-                                />
-                            ))}
-                        </div>
-
-                        <div
-                            style={{
-                                display: 'flex',
-                                flexWrap: 'wrap',
-                                marginTop: '10px',
-                                justifyContent: 'center'
-                            }}>
-                            {product.sizes.map((size: any, sizeIndex: any) => (
-                                <div key={sizeIndex}
-                                    style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        borderRadius: '25%',
-                                        margin: '5px',
-                                        width: '40px',
-                                        height: '40px',
-                                        border: '1px solid #D1D1D1',
-                                        textAlign: 'center',
-                                    }}>
-                                    <span>{size}</span>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div
-                            style={{
-                                marginTop: '10px',
-                                fontWeight: '400',
-                                textAlign: 'center',
-                                fontFamily: 'Inter'
-                            }}>
-                            {product.name}
-                        </div>
-
-                        <div
-                            style={{
-                                marginTop: '10px',
-                                fontWeight: '700',
-                                textAlign: 'center',
-                                fontFamily: 'Inter'
-                            }}>
-                            {product.price}
-                        </div>
-
-                        <button
-                            onClick={() => window.location = '/product' as any}
-                            style={{
-                                marginTop: '10px',
-                                width: '100%',
-                                padding: '10px',
-                                backgroundColor: '#1C1C1C',
-                                color: 'white',
+                            <p style={{
+                                fontFamily: "Inter",
+                                fontSize: '20px',
                                 fontWeight: 'bold',
-                                border: 'none',
-                                borderRadius: '4px',
-                                cursor: 'pointer'
                             }}>
-                            Comprar
-                        </button>
+                                {`R$ ${product.price}`}
+                            </p>
 
+                            <button onClick={() => window.location.href = '/product'} style={{ backgroundColor: '#1C1C1C', color: 'white', fontWeight: 'bold', borderRadius: '4px', border: 'none', padding: '10px 20px', cursor: 'pointer', marginTop: '10px', width: '100%' }}>Comprar</button>
+                        </div>
                     </div>
                 ))}
             </div>
-        </div>
+        </>
     );
 };
 
 export default ProductCard;
+
+
