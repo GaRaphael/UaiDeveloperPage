@@ -1,5 +1,4 @@
 import api from '../../../api/api';
-import showNotification from '../../components/extras/showNotification';
 import React, { useEffect, useState } from 'react';
 import { Footer, Navbar } from "../../components";
 import ProductOverview from "../../components/product/productOverview";

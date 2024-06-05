@@ -1,11 +1,9 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import Modal, { ModalHeader, ModalBody } from '../../bootstrap/Modal';
+import React, { useState } from 'react';
 import Input from '../../bootstrap/forms/Input';
-import FormGroup from '../../bootstrap/forms/FormGroup';
-import { CardBody } from '../../bootstrap/Card';
 import { useFormik } from 'formik';
-import Select from '../../bootstrap/forms/Select';
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Terminal } from "lucide-react"
 import Label from '../../bootstrap/forms/Label';
 import { SketchPicker } from 'react-color';
 
@@ -19,12 +17,11 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import showNotification from '@/components/extras/showNotification';
 import api from '../../../../api/api';
 import Textarea from '@/components/bootstrap/forms/Textarea';
 
 
-export const ModalProductCategories: React.FC = () => {
+export const ModalProductCasual: React.FC = () => {
 
     const [imageString, setImageString] = useState<string>('');
 
@@ -52,14 +49,17 @@ export const ModalProductCategories: React.FC = () => {
 
             try {
                 const response = await api.post('/suit', data);
-                const message = 'Terno cadastrado com sucesso'
 
-                if (response.status === 200) {
-                    showNotification('Notificação', message, 'success');
-                }
+                <Alert>
+                    <Terminal className="h-4 w-4" />
+                    <AlertTitle>Sucesso</AlertTitle>
+                    <AlertDescription>
+                        Produto cadastrado com sucesso
+                    </AlertDescription>
+                </Alert>
 
             } catch (error) {
-                showNotification('Atenção', 'Erro ao cadastrar um terno', 'danger');
+                console.log(error);
             }
         },
     });
@@ -205,4 +205,4 @@ export const ModalProductCategories: React.FC = () => {
     );
 };
 
-export default ModalProductCategories;
+export default ModalProductCasual;

@@ -2,15 +2,15 @@
 import { Navbar, Footer } from "../../components";
 
 // sections
-import AllProductCategories from "../../components/product/allProductCategories";
+import AllProductPant from "../../components/modals/calca/allProductPant";
 
 
 export default function Landing() {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <div >
-        <AllProductCategories />
+        <AllProductPant />
       </div>
       {/* <Footer /> */}
     </>

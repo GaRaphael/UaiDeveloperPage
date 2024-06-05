@@ -19,7 +19,6 @@ function NavItem({ children, href }: NavItemProps) {
   return (
     <li>
       <Typography
-        as="a"
         href={href || "#"}
         target={href ? "_blank" : "_self"}
         variant="small"
@@ -36,7 +35,6 @@ function NavItem({ children, href }: NavItemProps) {
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
-  const [isScrolling, setIsScrolling] = React.useState(false);
 
   function handleOpen() {
     setOpen((cur) => !cur);
@@ -47,20 +45,6 @@ export function Navbar() {
       "resize",
       () => window.innerWidth >= 960 && setOpen(false)
     );
-  }, []);
-
-  React.useEffect(() => {
-    function handleScroll() {
-      if (window.scrollY > 0) {
-        setIsScrolling(true);
-      } else {
-        setIsScrolling(false);
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -75,7 +59,7 @@ export function Navbar() {
       onPointerLeaveCapture={() => { }}
     >
 
-<div className="container mx-auto flex items-center ">
+      <div className="container mx-auto flex items-center ">
         <div style={
           {
             width: "50px",
@@ -92,32 +76,39 @@ export function Navbar() {
           <img src={logo.src} alt="Logo" />
         </div>
 
-{/* 
+
         <Link href="/" passHref>
           <Typography
             as="a"
             target="_blank"
             variant="h3"
-            color={isScrolling ? "gray" : "black"}
+            color={"black"}
             placeholder={"Lótus Alfaiataria"}
             onPointerEnterCapture={() => { }}
             onPointerLeaveCapture={() => { }}
+            style={{ 
+              color: "black",
+              fontFamily: "Inter",
+              fontWeight: "bold",
+              fontSize: "25px",
+            }}
           >
+          
             Lotus Alfaiataria
           </Typography>
-        </Link> */}
+        </Link>
 
-
-
-
-        {/* <div className="row-auto ml-[450px]">
+        <div className="row-auto ml-[450px]">
           <ul
-            className={`hidden items-center row-auto gap-6 lg:flex ${isScrolling ? "text-gray-900" : "text-white"}`}
+            className={`hidden items-center row-auto gap-6 lg:flex "text-gray-900" `}
           >
             <Typography
               style={{
                 display: "inline-block",
                 marginLeft: "30px",
+                color: "black",
+                fontFamily: "Inter",
+                fontWeight: "bold",
               }}
               as="a"
               href="/"
@@ -125,16 +116,18 @@ export function Navbar() {
               placeholder={"Lótus Alfaiataria"}
               onPointerEnterCapture={() => { }}
               onPointerLeaveCapture={() => { }}
-              variant="h5"
-              color={isScrolling ? "gray" : "black"}
+              variant="h4"
             >
-              <NavItem href="/pageProduct">Produtos</NavItem>
+              <NavItem href="/">Home</NavItem>
             </Typography>
 
             <Typography
               style={{
                 display: "inline-block",
                 marginLeft: "30px",
+                color: "black",
+                fontFamily: "Inter",
+                fontWeight: "bold",
               }}
               as="a"
               href="/"
@@ -142,37 +135,19 @@ export function Navbar() {
               placeholder={"Lótus Alfaiataria"}
               onPointerEnterCapture={() => { }}
               onPointerLeaveCapture={() => { }}
-              variant="h5"
-              color={isScrolling ? "gray" : "black"}
+              variant="h4"
             >
               <NavItem href="/category1">Categorias</NavItem>
             </Typography>
-
-            <Typography
-              style={{
-                display: "inline-block",
-                marginLeft: "30px",
-              }}
-              as="a"
-              href="/"
-              target="_blank"
-              placeholder={"Lótus Alfaiataria"}
-              onPointerEnterCapture={() => { }}
-              onPointerLeaveCapture={() => { }}
-              variant="h5"
-              color={isScrolling ? "gray" : "black"}
-            >
-              <NavItem href="/category1">Sobre</NavItem>
-            </Typography>
           </ul>
-          
-        </div> */}
+
+        </div>
 
 
 
         <IconButton
           variant="text"
-          color={isScrolling ? "gray" : "white"}
+          color={"gray"}
           placeholder={"Lótus Alfaiataria"}
           onPointerEnterCapture={() => { }}
           onPointerLeaveCapture={() => { }}
@@ -186,10 +161,6 @@ export function Navbar() {
           )}
         </IconButton>
       </div>
-
-
-
-
 
       <Collapse open={open}>
         <div className="container mx-auto mt-4 rounded-lg border-t border-blue-gray-50 bg-white px-6 py-5">
@@ -215,15 +186,6 @@ export function Navbar() {
               onPointerLeaveCapture={() => { }}>
               <i className="fa-brands fa-instagram text-base" />
             </IconButton>
-            <a href="https://www.material-tailwind.com/blocks" target="_blank">
-              <Button color="gray" size="sm" className="ml-auto"
-                placeholder={"Lótus Alfaiataria"}
-                onPointerEnterCapture={() => { }}
-                onPointerLeaveCapture={() => { }}
-              >
-                Blocks
-              </Button>
-            </a>
           </div>
         </div>
       </Collapse>
