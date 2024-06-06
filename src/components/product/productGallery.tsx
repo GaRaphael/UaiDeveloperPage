@@ -1,13 +1,10 @@
+"use client";
+
 interface Props {
-  images: ({
-    src: string;
-    alt: string;
-  })[];
+  images: any
 }
 
-export default function ProductGallery({
-  images,
-}: Props) {
+export default function ProductGallery({ images }: Props) {
 
   return (
     <>
@@ -16,16 +13,16 @@ export default function ProductGallery({
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'flex-start',
-          padding: '0 100px 0 250px',
+          padding: '0 100px 0 150px',
         }}
       >
         <div>
-          <img className="max-h-[250px] max-w-[350px] mt-[130px]" src={images[0].src} alt={images[0].alt} />
-          <img className="max-h-[250px] max-w-[350px] mt-[20px]" src={images[0].src} alt={images[1].alt} />
-          <img className="max-h-[250px] max-w-[350px] mt-[20px]" src={images[0].src} alt={images[2].alt} />
+          <img className="max-h-[250px] max-w-[350px] mt-[130px]" src={images} />
+          <img className="max-h-[250px] max-w-[350px] mt-[20px]" src={images} />
+          <img className="max-h-[250px] max-w-[350px] mt-[20px]" src={images} />
         </div>
         <div>
-          <img className="max-h-[790px] max-w-[700px] mt-[130px] ml-[70px]" src={images[3].src} alt={images[3].alt} />
+          <img className="max-h-[790px] max-w-[700px] mt-[130px] ml-[70px]" src={images} />
         </div>
       </div>
     </>

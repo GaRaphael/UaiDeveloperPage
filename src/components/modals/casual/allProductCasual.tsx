@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import api from '../../../../api/api';
-import ModalProductPant from '../calca/modalProductFeminia';
+import ModalProductCasual from './modalProductCasual'
 import ProductCardCasual from './productCardCasual';
 
 
@@ -26,7 +26,7 @@ const AllProductCategories: React.FC<any> = () => {
         <>
             <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '150px' }}>
                 <div style={{ margin: '50px' }}>
-                    <ModalProductPant />
+                    <ModalProductCasual />
                 </div>
                 <ProductCardCasual products={products} />
             </div>

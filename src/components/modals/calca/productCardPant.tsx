@@ -3,6 +3,7 @@
 import { Inter } from 'next/font/google';
 import api from '../../../../api/api';
 import Icon from '@/components/icon/Icon';
+import { useRouter } from 'next/navigation';
 
 interface Product {
     model: string;
@@ -61,6 +62,15 @@ const handleProductClick = async (item: any) => {
 };
 
 const ProductCardPant: React.FC<Props> = ({ products }) => {
+
+    const router = useRouter()
+
+
+    const handleOpenProduct = (item: any) => {
+
+        router.push(`/pcal/${item.id}`)
+    };
+
     return (
         <>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -106,7 +116,7 @@ const ProductCardPant: React.FC<Props> = ({ products }) => {
                                 {`R$ ${product.price}`}
                             </p>
 
-                            <button onClick={() => window.location.href = '/product'} style={{ backgroundColor: '#1C1C1C', color: 'white', fontWeight: 'bold', borderRadius: '4px', border: 'none', padding: '10px 20px', cursor: 'pointer', marginTop: '10px', width: '100%' }}>Comprar</button>
+                            <button onClick={() => handleOpenProduct(product)} style={{ backgroundColor: '#1C1C1C', color: 'white', fontWeight: 'bold', borderRadius: '4px', border: 'none', padding: '10px 20px', cursor: 'pointer', marginTop: '10px', width: '100%' }}>Comprar</button>
                         </div>
                     </div>
                 ))}

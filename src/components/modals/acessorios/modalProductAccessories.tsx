@@ -18,25 +18,20 @@ import {
 import api from '../../../../api/api';
 import Textarea from '@/components/bootstrap/forms/Textarea';
 
-interface Product {
-    item?: any;
-}
 
-
-export const ModalProductAccessories: React.FC<Product> = ({ item }) => {
+export const ModalProductAccessories: React.FC = () => {
 
     const [imageString, setImageString] = useState<string>('');
-    const [isOpen, setIsOpen] = useState(false);
 
     const formik = useFormik({
         initialValues: {
             image: '',
-            model: item.model || '',
-            price: item.price || '',
-            size: item.size || '',
+            model: '',
+            price: '',
+            size: '',
             color: '',
-            composition: item.composition || '',
-            description: item.description || '',
+            composition: '',
+            description: '',
         },
 
         onSubmit: async (values) => {
@@ -200,7 +195,7 @@ export const ModalProductAccessories: React.FC<Product> = ({ item }) => {
                         </div>
                     </div>
                     <DialogFooter>
-                        <Button type="submit" onClick={() => alert()}>Cadastrar</Button>
+                        <Button type="submit">Cadastrar</Button>
                     </DialogFooter>
                 </form>
             </DialogContent>

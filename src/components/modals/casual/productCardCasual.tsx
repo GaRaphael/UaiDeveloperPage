@@ -1,9 +1,13 @@
 "use client";
+
 import api from '../../../../api/api';
 import Icon from '@/components/icon/Icon';
+import { useRouter } from 'next/navigation';
+
 
 
 interface Product {
+    id: string;
     model: string;
     image: any;
     price: string;
@@ -17,14 +21,13 @@ interface Props {
     products: Product[];
 }
 
-const ProductSizeBalls: React.FC<{ sizes: string }> = ({ sizes }) => {
-    // Dividindo a string de tamanhos em um array
-    const sizeArray = sizes.split(',').map((size) => size.trim());
+
+const ProductSizeBalls: React.FC<{ sizes: any }> = ({ sizes }) => {
+    const sizeArray = sizes.split(',').map((size: any) => size.trim());
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px' }}>
-            {/* Mapeando o array de tamanhos e renderizando uma bola para cada tamanho */}
-            {sizeArray.map((size, index) => (
+            {sizeArray.map((size: any, index: any) => (
                 <div
                     key={index}
                     style={{
@@ -56,13 +59,21 @@ const handleProductClick = async (item: any) => {
     } catch (error: any) {
         console.log(error.response);
     }
-
 };
 
+
 const ProductCardCasual: React.FC<Props> = ({ products }) => {
+
+    const router = useRouter()
+
+
+    const handleOpenProduct = (item: any) => {
+
+        router.push(`/pcas/${item.id}`)
+    };
+
     return (
         <>
-
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
                 {products?.map((product, index) => (
                     <div key={index} style={{ borderRadius: '8px', width: '300px', margin: '30px', padding: '16px', backgroundColor: '#F6F6F6' }}>
@@ -107,11 +118,12 @@ const ProductCardCasual: React.FC<Props> = ({ products }) => {
                                 {`R$ ${product.price}`}
                             </p>
 
-                            <button onClick={() => window.location.href = '/product'} style={{ backgroundColor: '#1C1C1C', color: 'white', fontWeight: 'bold', borderRadius: '4px', border: 'none', padding: '10px 20px', cursor: 'pointer', marginTop: '10px', width: '100%' }}>Comprar</button>
+                            <button onClick={() => handleOpenProduct(product)} style={{ backgroundColor: '#1C1C1C', color: 'white', fontWeight: 'bold', borderRadius: '4px', border: 'none', padding: '10px 20px', cursor: 'pointer', marginTop: '10px', width: '100%' }}>Comprar</button>
                         </div>
                     </div>
                 ))}
             </div>
+
         </>
     );
 };

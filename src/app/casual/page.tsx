@@ -6,6 +6,7 @@ import AllProductCategories from "../../components/modals/casual/allProductCasua
 
 
 export default function Landing() {
+  
   return (
     <>
       <Navbar />

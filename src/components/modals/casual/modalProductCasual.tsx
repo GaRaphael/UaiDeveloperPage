@@ -195,7 +195,7 @@ export const ModalProductCasual: React.FC = () => {
                         </div>
                     </div>
                     <DialogFooter>
-                        <Button type="submit">Cadastrar</Button>
+                        <Button type="submit" onClick={() => window.location.href = '/casual'}>Cadastrar</Button>
                     </DialogFooter>
                 </form>
             </DialogContent>

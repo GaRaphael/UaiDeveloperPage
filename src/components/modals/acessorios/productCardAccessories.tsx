@@ -3,7 +3,7 @@
 import Icon from '@/components/icon/Icon';
 import { Inter } from 'next/font/google';
 import api from '../../../../api/api';
-import ModalProductAccessories from './modalProductAccessories';
+import { useRouter } from 'next/navigation';
 
 interface Product {
     model: string;
@@ -61,20 +61,15 @@ const handleProductDisable = async (item: any) => {
 
 };
 
-const handleProductEdit = async (item: any) => {
-    try {
-
-        await api.put(`/accessories/${item.id}`);
-
-        window.location.reload();
-
-    } catch (error: any) {
-        console.log(error.response);
-    }
-
-};
-
 const ProductCardAccessories: React.FC<Props> = ({ products }) => {
+
+    const router = useRouter()
+
+    const handleOpenProduct = (item: any) => {
+
+        router.push(`/psap/${item.id}`)
+    };
+
     return (
         <>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -87,11 +82,6 @@ const ProductCardAccessories: React.FC<Props> = ({ products }) => {
                                 onClick={() => handleProductDisable(product)}
                                 icon='Delete'
                                 style={{ width: '35px', height: '35px', marginBottom: '15px', backgroundColor: 'white', cursor: 'pointer', marginRight: '25px' }} />
-
-                            {/* <Icon
-                                onClick={() => handleProductEdit(product)}
-                                icon='edit'
-                                style={{ width: '35px', height: '35px', marginBottom: '15px', backgroundColor: 'white', cursor: 'pointer' }} /> */}
                         </div>
 
                         <div style={{ width: '100%', height: '350px' }} >
@@ -126,7 +116,7 @@ const ProductCardAccessories: React.FC<Props> = ({ products }) => {
                                 {`R$ ${product.price}`}
                             </p>
 
-                            <button onClick={() => window.location.href = '/product'} style={{ backgroundColor: '#1C1C1C', color: 'white', fontWeight: 'bold', borderRadius: '4px', border: 'none', padding: '10px 20px', cursor: 'pointer', marginTop: '10px', width: '100%' }}>Comprar</button>
+                            <button onClick={() => handleOpenProduct(product)} style={{ backgroundColor: '#1C1C1C', color: 'white', fontWeight: 'bold', borderRadius: '4px', border: 'none', padding: '10px 20px', cursor: 'pointer', marginTop: '10px', width: '100%' }}>Comprar</button>
                         </div>
                     </div>
                 ))}

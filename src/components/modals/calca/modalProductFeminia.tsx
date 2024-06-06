@@ -56,7 +56,6 @@ export const ModalProductPant: React.FC = () => {
     });
 
     function alert() {
-        console.log('alert');
         <Alert>
             <Terminal className="h-4 w-4" />
             <AlertTitle>Sucesso</AlertTitle>
@@ -195,7 +194,7 @@ export const ModalProductPant: React.FC = () => {
                         </div>
                     </div>
                     <DialogFooter>
-                        <Button type="submit" onClick={() => alert()}>Cadastrar</Button>
+                        <Button type="submit">Cadastrar</Button>
                     </DialogFooter>
                 </form>
             </DialogContent>

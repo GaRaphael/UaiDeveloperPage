@@ -1,50 +1,47 @@
-import ProductRating from './reviewRating'
 import ProductGallery from './productGallery'
-import ProductSizes from './productSizes'
-
-
-interface Color {
-    name: string;
-    hex: string;
-}
-
-
-interface images {
-    src: string;
-    alt: string;
-}
-
-interface Size {
-    name: string;
-}
 
 interface Props {
-    name: string;
-    colors: Color[];
-    images: images[];
-    description: string;
-    price: string;
-    highlights: string[];
-    composition: string;
-    rating: number;
-    reviews: number;
-    sizes: Size[];
+    product: any;
 }
 
-export default function ProductOverview({
-    name,
-    colors,
-    images,
-    description,
-    price,
-    highlights,
-    composition,
-    rating,
-    reviews,
-    sizes
-}: Props) {
 
+const ProductSizeBalls: React.FC<{ sizes: any }> = ({ sizes }) => {
+    const sizeArray = sizes.split(',').map((size: any) => size.trim());
 
+    return (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px' }}>
+            {sizeArray.map((size: any, index: any) => (
+                <div
+                    key={index}
+                    style={{
+                        width: '35px',
+                        height: '35px',
+                        borderRadius: '50%',
+                        backgroundColor: '#F6F6F6',
+                        border: '1px solid #D1D1D1',
+                        textAlign: 'center',
+                        lineHeight: '40px',
+                        margin: '5px',
+                        marginBottom: '10px',
+                    }}
+                >
+                    {size}
+                </div>
+            ))}
+        </div>
+    );
+};
+
+export default function ProductCasual({ product }: Props) {
+
+    const colors = [
+        { name: 'Preto', hex: '#000000' },
+        { name: 'Branco', hex: '#FFFFFF' },
+        { name: 'Cinza', hex: '#6A6E70' },
+        { name: 'Azul', hex: '#2C98F0' },
+        { name: 'Vermelho', hex: '#FF0000' },
+        { name: 'Amarelo', hex: '#FFD700' },
+    ];
 
 
     return (
@@ -56,7 +53,7 @@ export default function ProductOverview({
             <div className="flex">
                 <div className="row">
                     <div className="col-6 ">
-                        <ProductGallery images={images} />
+                        <ProductGallery images={product.images} />
                     </div>
                 </div>
                 <div className="mt-[130px]">
@@ -73,7 +70,7 @@ export default function ProductOverview({
                             marginBottom: '30px',
                             fontFamily: 'Inter'
                         }}>
-                            {name}
+                            {product.name}
                         </h4>
                     </div>
 
@@ -119,7 +116,7 @@ export default function ProductOverview({
                                             border: '1px solid black'
                                         }}
                                     ></div>
-                                    
+
                                 </div>
                             ))}
                         </div>
@@ -134,32 +131,8 @@ export default function ProductOverview({
                             }}>
                             Tamanhos
                         </label>
-                        <div
-                            style={{
-                                display: 'flex',
-                                flexWrap: 'wrap',
-                                marginTop: '10px',
-                            }}
-                        >
-                            {sizes.map((size, index) => (
-                                <div
-                                    key={index}
-                                    style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        borderRadius: '25%',
-                                        margin: '5px',
-                                        width: '40px',
-                                        height: '40px',
-                                        border: '1px solid gray',
-                                        textAlign: 'center'
-                                    }}
-                                >
-                                    <span>{size.name}</span>
-                                </div>
-                            ))}
-                        </div>
+
+                        <ProductSizeBalls sizes={product.size} />
                     </div>
 
                     <hr style={{
@@ -177,7 +150,7 @@ export default function ProductOverview({
                             fontFamily: 'Inter',
 
                         }}>
-                        {price}
+                        {product.price}
                     </p>
 
                     <div style={{
@@ -223,7 +196,7 @@ export default function ProductOverview({
                             marginBottom: '20px',
                             color: '#6A6E70'
                         }}>
-                            Composição: {composition}
+                            Composição: {product.composition}
                         </p>
 
                         <p style={{
@@ -232,7 +205,7 @@ export default function ProductOverview({
                             fontFamily: 'Inter',
                             marginBottom: '30px'
                         }}>
-                            {description}
+                            {product.description}
                         </p>
                     </div>
                 </div>
@@ -242,36 +215,3 @@ export default function ProductOverview({
 };
 
 
-
-{/* <div className="col-12 col-lg-6">
-<div className="card-body">
-    <h2 className="card-title">{title}</h2>
-    <ProductRating rating={rating} />
-    <p className="card-text">{full_description}</p>
-    <h3 className="card-price">${price}</h3>
-    <ProductSizes sizes={sizes} />
-    <div className="card-options">
-        <div className="row">
-            <div className="col-12 col-md-6">
-                <label>Color</label>
-                <select className="form-control">
-                    {colors.map(color =>
-                        <option>{color}</option>
-                    )}
-                </select>
-            </div>
-            <div className="col-12 col-md-6">
-                <label>Size</label>
-                <select className="form-control">
-                    {Object.keys(sizes).map(size =>
-                        <option>{size}</option>
-                    )}
-                </select>
-            </div>
-        </div>
-    </div>
-    <div className="card-footer">
-        <button className="btn btn-primary btn-round">Add to cart</button>
-    </div>
-</div>
-</div> */}

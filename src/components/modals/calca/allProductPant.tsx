@@ -1,9 +1,8 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-// import ProductCard, { ColorList, SizeList } from './productCard';
 import api from '../../../../api/api';
 import ModalProductPant from './modalProductFeminia';
-import ProductCardPant from '../acessorios/productCardAccessories';
+import ProductCardPant from './productCardPant';
 
 
 const AllProductPant: React.FC<any> = () => {
