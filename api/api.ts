@@ -9,7 +9,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
-  const token = localStorage.getItem('facitAccessToken')
+  const token = localStorage.getItem('facitAccessToken');
 
   if (token) {
     config.headers.Authorization = Bearer ${token};
