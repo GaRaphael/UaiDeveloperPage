@@ -1,21 +1,20 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: ('http://localhost:3002/api'),
+  baseURL: process.env.NEXT_PUBLIC_BASEURL, 
   headers: {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*', 
   },
 });
 
 api.interceptors.request.use(async (config) => {
-  const token = localStorage.getItem('facitAccessToken')
+  const token = localStorage.getItem('facitAccessToken');
 
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+    config.headers.Authorization = `Bearer ${token}`; 
   }
   return config;
 });
-
 
 export default api;

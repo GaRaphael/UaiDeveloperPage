@@ -4,7 +4,8 @@ export * from "./feature";
 export * from "./faqs";
 export * from "./products";
 export * from "../components/testimonials";
-export * from "./[pcas]/[id]/page";
+export * from ".";
+export * from "./pcas/[id]/page";
 export * from "./";
 
 

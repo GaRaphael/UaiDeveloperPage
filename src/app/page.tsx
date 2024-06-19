@@ -1,8 +1,9 @@
+// src/app/page.tsx
+import React from 'react';
+import LoginPage from '../components/login/page';
 
-export default function Login() {
-    return (
-        <p>
-            login page
-        </p>
-    );
-}
+const HomePage = () => {
+  return <LoginPage />;
+};
+
+export default HomePage;
