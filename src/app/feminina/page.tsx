@@ -8,7 +8,7 @@ import AllProductWomen from "../../components/modals/feminina/allProductWomen";
 export default function Landing() {
   return (
     <>
-      <Navbar />
+      
       <div >
         <AllProductWomen />
       </div>

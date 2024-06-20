@@ -1,40 +1,38 @@
+// Navbar.tsx
 import React from "react";
 import {
   Navbar as MTNavbar,
   Collapse,
   IconButton,
   Typography,
-  Button,
 } from "@material-tailwind/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon, UserIcon } from "@heroicons/react/24/outline";
 import logo from "../../public/suit_favicon.png";
 import Link from 'next/link';
-
+import { ShoppingCart } from "./cart/page"; // Importa o novo componente
+import { useCart } from "../../src/context/cartContext"; // Importa o contexto do carrinho
 
 interface NavItemProps {
   children: React.ReactNode;
   href?: string;
+  className?: string;
 }
-function NavItem({ children, href }: NavItemProps) {
+
+function NavItem({ children, href, className }: NavItemProps) {
   return (
-    <li>
-      <Typography
-        href={href || "#"}
-        target={href ? "_blank" : "_self"}
-        variant="small"
-        className="font-medium"
-        placeholder={"Lótus Alfaiataria"}
-        onPointerEnterCapture={() => { }}
-        onPointerLeaveCapture={() => { }}
-      >
-        {children}
-      </Typography>
+    <li className={`mx-4 ${className}`}>
+      <Link href={href || "#"} passHref legacyBehavior>
+        <a className="font-medium text-black">
+          {children}
+        </a>
+      </Link>
     </li>
   );
 }
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
+  const [isScrolling, setIsScrolling] = React.useState(false);
 
   function handleOpen() {
     setOpen((cur) => !cur);
@@ -47,6 +45,20 @@ export function Navbar() {
     );
   }, []);
 
+  React.useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY > 0) {
+        setIsScrolling(true);
+      } else {
+        setIsScrolling(false);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <MTNavbar
       fullWidth
@@ -54,105 +66,36 @@ export function Navbar() {
       blurred={false}
       color={"white"}
       className="fixed top-0 z-50 border-0"
-      placeholder={"Lótus Alfaiataria"}
-      onPointerEnterCapture={() => { }}
-      onPointerLeaveCapture={() => { }}
+      placeholder={undefined}
+      onPointerEnterCapture={undefined}
+      onPointerLeaveCapture={undefined}
     >
-
-      <div className="container mx-auto flex items-center ">
-        <div style={
-          {
-            width: "50px",
-            height: "50px",
-            borderRadius: "50%",
-            backgroundColor: "white",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginRight: "30px"
-          }
-        }
-        >
-          <img src={logo.src} alt="Logo" />
+      <div className="container mx-auto flex items-center justify-between">
+        <div className="flex items-center">
+          <div className="flex items-center justify-center mr-4 w-12 h-12 rounded-full bg-white">
+            <img src={logo.src} alt="Logo" />
+          </div>
+          <Link href="/" passHref legacyBehavior>
+            <a className="ml-2 text-black text-xl font-semibold">
+              Lotus Alfaiataria
+            </a>
+          </Link>
         </div>
+        <div className="hidden lg:flex items-center">
+          <ul className="flex items-center gap-6">
+          <NavItem href="/landing">Início</NavItem>
+          <NavItem href="/catalog">Catálogo</NavItem>
+            <ShoppingCart /> {/* Usa o novo componente */}
 
-
-        <Link href="/" passHref>
-          <Typography
-            as="a"
-            target="_blank"
-            variant="h3"
-            color={"black"}
-            placeholder={"Lótus Alfaiataria"}
-            onPointerEnterCapture={() => { }}
-            onPointerLeaveCapture={() => { }}
-            style={{ 
-              color: "black",
-              fontFamily: "Inter",
-              fontWeight: "bold",
-              fontSize: "25px",
-            }}
-          >
-          
-            Lotus Alfaiataria
-          </Typography>
-        </Link>
-
-        <div className="row-auto ml-[450px]">
-          <ul
-            className={`hidden items-center row-auto gap-6 lg:flex "text-gray-900" `}
-          >
-            <Typography
-              style={{
-                display: "inline-block",
-                marginLeft: "30px",
-                color: "black",
-                fontFamily: "Inter",
-                fontWeight: "bold",
-              }}
-              as="a"
-              href="/"
-              target="_blank"
-              placeholder={"Lótus Alfaiataria"}
-              onPointerEnterCapture={() => { }}
-              onPointerLeaveCapture={() => { }}
-              variant="h4"
-            >
-              <NavItem href="/">Home</NavItem>
-            </Typography>
-
-            <Typography
-              style={{
-                display: "inline-block",
-                marginLeft: "30px",
-                color: "black",
-                fontFamily: "Inter",
-                fontWeight: "bold",
-              }}
-              as="a"
-              href="/"
-              target="_blank"
-              placeholder={"Lótus Alfaiataria"}
-              onPointerEnterCapture={() => { }}
-              onPointerLeaveCapture={() => { }}
-              variant="h4"
-            >
-              <NavItem href="/category1">Categorias</NavItem>
-            </Typography>
           </ul>
-
         </div>
-
-
-
         <IconButton
           variant="text"
-          color={"gray"}
-          placeholder={"Lótus Alfaiataria"}
-          onPointerEnterCapture={() => { }}
-          onPointerLeaveCapture={() => { }}
           onClick={handleOpen}
           className="ml-auto inline-block lg:hidden"
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
         >
           {open ? (
             <XMarkIcon strokeWidth={2} className="h-6 w-6" />
@@ -161,36 +104,17 @@ export function Navbar() {
           )}
         </IconButton>
       </div>
-
       <Collapse open={open}>
         <div className="container mx-auto mt-4 rounded-lg border-t border-blue-gray-50 bg-white px-6 py-5">
-          <div className="mt-4 flex items-center gap-2">
-            <IconButton variant="text" color="gray"
-              size="sm"
-              placeholder={"Lótus Alfaiataria"}
-              onPointerEnterCapture={() => { }}
-              onPointerLeaveCapture={() => { }}>
-              <i className="fa-brands fa-twitter text-base" />
-            </IconButton>
-            <IconButton variant="text" color="gray"
-              size="sm"
-              placeholder={"Lótus Alfaiataria"}
-              onPointerEnterCapture={() => { }}
-              onPointerLeaveCapture={() => { }}
-            >
-              <i className="fa-brands fa-facebook text-base" />
-            </IconButton>
-            <IconButton variant="text" color="gray" size="sm"
-              placeholder={"Lótus Alfaiataria"}
-              onPointerEnterCapture={() => { }}
-              onPointerLeaveCapture={() => { }}>
-              <i className="fa-brands fa-instagram text-base" />
-            </IconButton>
-          </div>
+          <ul className="flex flex-col items-center gap-4">
+            <NavItem href="/landing">Início</NavItem>
+            <NavItem href="/catalog">Catálogo</NavItem>
+            <ShoppingCart /> {/* Usa o novo componente */}
+
+          </ul>
         </div>
       </Collapse>
-    </MTNavbar >
-
+    </MTNavbar>
   );
 }
 

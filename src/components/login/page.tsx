@@ -4,6 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import backgroundImg from '../../../public/image/background_2.jpg';
 
 
 // Interface para o estado do formulário de cadastro
@@ -47,10 +48,10 @@ const SignUpForm = ({ onSignUpSuccess, toggleForm }: { onSignUpSuccess: () => vo
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-wrap">
+    <form onSubmit={handleSubmit} className="flex flex-wrap" >
       <h2 className="text-2xl font-bold mb-6 text-center w-full">Sign Up</h2>
       {error && <div className="mb-4 text-red-500">{error}</div>}
-      <div className="mb-4 w-1/2 pr-2">
+      <div className="mb-4 w-1/2 pr-2" >
         <label className="block text-white text-sm font-bold mb-2" htmlFor="firstname">First Name</label>
         <input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
@@ -289,7 +290,7 @@ export default function Home() {
   const [isForgotPassword, setIsForgotPassword] = useState(false); // Estado para alternar entre a tela de login e redefinição de senha
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-gray-90">
+    <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-gray-90   inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${backgroundImg.src})` }}>
       <div className="w-96 bg-black bg-opacity-50 p-8 rounded-lg shadow-md text-white">
         {isForgotPassword ? (
           <ForgotPasswordForm toggleForm={() => setIsForgotPassword(false)} />

@@ -9,7 +9,6 @@ export default function Landing() {
   
   return (
     <>
-      <Navbar />
       <div >
         <AllProductCategories />
       </div>

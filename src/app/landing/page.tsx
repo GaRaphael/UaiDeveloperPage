@@ -9,11 +9,10 @@ import Products from "../products";
 export default function Landing() {
   return (
     <>
-      <Navbar />
       <Hero />
       <Feature />
       <Products />
-      <Footer />
+
     </>
   );
 }
