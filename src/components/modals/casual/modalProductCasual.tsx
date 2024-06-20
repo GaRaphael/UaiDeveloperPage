@@ -2,8 +2,6 @@
 import React, { useState } from 'react';
 import Input from '../../bootstrap/forms/Input';
 import { useFormik } from 'formik';
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Terminal } from "lucide-react"
 import Label from '../../bootstrap/forms/Label';
 import { SketchPicker } from 'react-color';
 import { Button } from "@/components/ui/button"
@@ -12,7 +10,6 @@ import Textarea from '@/components/bootstrap/forms/Textarea';
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
     DialogFooter,
     DialogHeader,
     DialogTitle,
@@ -55,7 +52,7 @@ export const ModalProductCasual: React.FC = () => {
 
             } catch (error) {
                 console.log(error);
-                window.location.reload();
+
                 window.alert('Erro ao cadastrar produto!');
             }
         },
@@ -192,7 +189,7 @@ export const ModalProductCasual: React.FC = () => {
                         </div>
                     </div>
                     <DialogFooter>
-                        <Button type="submit" onClick={() => window.location.href = '/casual'}>Cadastrar</Button>
+                        <Button type="submit">Cadastrar</Button>
                     </DialogFooter>
                 </form>
             </DialogContent>

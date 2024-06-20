@@ -37,7 +37,6 @@ export default function RootLayout({
       </head>
       <body className={roboto.className}>
         <Layout>
-          <Navbar />
           {children}
           <FixedPlugin />
           <Footer />

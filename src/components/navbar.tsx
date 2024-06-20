@@ -86,14 +86,14 @@ export function Navbar() {
             placeholder={"Lótus Alfaiataria"}
             onPointerEnterCapture={() => { }}
             onPointerLeaveCapture={() => { }}
-            style={{ 
+            style={{
               color: "black",
               fontFamily: "Inter",
               fontWeight: "bold",
               fontSize: "25px",
             }}
           >
-          
+
             Lotus Alfaiataria
           </Typography>
         </Link>
@@ -111,14 +111,13 @@ export function Navbar() {
                 fontWeight: "bold",
               }}
               as="a"
-              href="/"
-              target="_blank"
+              href="/landing"
               placeholder={"Lótus Alfaiataria"}
               onPointerEnterCapture={() => { }}
               onPointerLeaveCapture={() => { }}
               variant="h4"
             >
-              <NavItem href="/">Home</NavItem>
+              <NavItem href="/landing">Home</NavItem>
             </Typography>
 
             <Typography
@@ -131,13 +130,12 @@ export function Navbar() {
               }}
               as="a"
               href="/"
-              target="_blank"
               placeholder={"Lótus Alfaiataria"}
               onPointerEnterCapture={() => { }}
               onPointerLeaveCapture={() => { }}
               variant="h4"
             >
-              <NavItem href="/category1">Categorias</NavItem>
+              <NavItem href="/">sair</NavItem>
             </Typography>
           </ul>
 
