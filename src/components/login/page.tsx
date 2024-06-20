@@ -301,7 +301,7 @@ export default function Home() {
   const [isForgotPassword, setIsForgotPassword] = useState(false); // Estado para alternar entre a tela de login e redefinição de senha
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-gray-90">
+       <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-gray-90   inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${backgroundImg.src})` }}>
       <div className="w-96 bg-black bg-opacity-50 p-8 rounded-lg shadow-md text-white">
         {isForgotPassword ? (
           <ForgotPasswordForm toggleForm={() => setIsForgotPassword(false)} />
