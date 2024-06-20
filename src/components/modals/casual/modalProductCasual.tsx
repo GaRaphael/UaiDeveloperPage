@@ -6,8 +6,9 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Terminal } from "lucide-react"
 import Label from '../../bootstrap/forms/Label';
 import { SketchPicker } from 'react-color';
-
 import { Button } from "@/components/ui/button"
+import api from '../../../../api/api';
+import Textarea from '@/components/bootstrap/forms/Textarea';
 import {
     Dialog,
     DialogContent,
@@ -17,8 +18,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import api from '../../../../api/api';
-import Textarea from '@/components/bootstrap/forms/Textarea';
+
 
 
 export const ModalProductCasual: React.FC = () => {
@@ -48,18 +48,15 @@ export const ModalProductCasual: React.FC = () => {
             };
 
             try {
-                const response = await api.post('/suit', data);
+                await api.post('/suit', data);
 
-                <Alert>
-                    <Terminal className="h-4 w-4" />
-                    <AlertTitle>Sucesso</AlertTitle>
-                    <AlertDescription>
-                        Produto cadastrado com sucesso
-                    </AlertDescription>
-                </Alert>
+                window.location.reload();
+                window.alert('Produto cadastrado com sucesso!');
 
             } catch (error) {
                 console.log(error);
+                window.location.reload();
+                window.alert('Erro ao cadastrar produto!');
             }
         },
     });
