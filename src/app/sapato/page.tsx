@@ -8,7 +8,6 @@ import AllProductAccessories from "../../components/modals/acessorios/allProduct
 export default function Landing() {
   return (
     <>
-      <Navbar />
       <div >
         <AllProductAccessories />
       </div>

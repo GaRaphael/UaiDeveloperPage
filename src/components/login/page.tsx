@@ -5,6 +5,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import api from '../../../api/api';
+import backgroundImg from '../../../public/image/background_2.jpg';
 
 
 // Componente para o formulário de cadastro
@@ -301,7 +302,7 @@ export default function Home() {
   const [isForgotPassword, setIsForgotPassword] = useState(false); // Estado para alternar entre a tela de login e redefinição de senha
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-gray-90">
+       <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-gray-90   inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${backgroundImg.src})` }}>
       <div className="w-96 bg-black bg-opacity-50 p-8 rounded-lg shadow-md text-white">
         {isForgotPassword ? (
           <ForgotPasswordForm toggleForm={() => setIsForgotPassword(false)} />
@@ -314,5 +315,4 @@ export default function Home() {
     </main>
   );
 }
-
 

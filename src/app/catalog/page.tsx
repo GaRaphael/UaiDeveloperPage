@@ -2,17 +2,15 @@
 import { Navbar, Footer } from "../../components";
 
 // sections
-import AllProductWomen from "../../components/modals/feminina/allProductWomen";
+import AllProductCategories from "../../components/product/allProductCategories";
 
 
 export default function Landing() {
   return (
     <>
-      
-      <div >
-        <AllProductWomen />
+      <div className="container mt-5">
+        <AllProductCategories />
       </div>
-      {/* <Footer /> */}
     </>
   );
 }

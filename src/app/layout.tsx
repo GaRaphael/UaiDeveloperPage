@@ -1,10 +1,11 @@
+// layout.tsx
 import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import { FixedPlugin, Navbar, Footer } from "@/components";
-import { Layout } from "@/components";
-import favicon from './../../public/suit_favicon.png'
-
+import { FixedPlugin, Layout, Navbar, Footer } from "@/components"; // Certifique-se de ajustar os caminhos conforme necessário
+import favicon from './../../public/suit_favicon.png';
+import React from 'react';
+import { CartProvider } from '../context/cartContext';
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -14,8 +15,7 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: "Lotus",
-  description:
-    "",
+  description: "",
 };
 
 export default function RootLayout({
@@ -36,12 +36,16 @@ export default function RootLayout({
         <link rel="shortcut icon" href={favicon.src} type="image/png" />
       </head>
       <body className={roboto.className}>
-        <Layout>
-          <Navbar />
-          {children}
-          <FixedPlugin />
-          <Footer />
-        </Layout>
+        <CartProvider>
+          <Layout>
+            <Navbar />
+            <div style={{ marginTop: '70px' }}> {/* Adiciona margem superior */}
+              {children}
+            </div>
+            <FixedPlugin />
+            <Footer />
+          </Layout>
+        </CartProvider>
       </body>
     </html>
   );
