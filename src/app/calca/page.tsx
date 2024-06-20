@@ -11,7 +11,6 @@ export default function Landing() {
       <div >
         <AllProductPant />
       </div>
-      {/* <Footer /> */}
     </>
   );
 }

@@ -47,24 +47,17 @@ export const ModalProductAccessories: React.FC = () => {
 
             try {
                 await api.post('/accessories', data);
+                window.location.reload();
+                window.alert('Produto cadastrado com sucesso!');
 
 
             } catch (error) {
                 console.log(error);
+                window.location.reload();
+                window.alert('Erro ao cadastrar produto');
             }
         },
     });
-
-    function alert() {
-        console.log('alert');
-        <Alert>
-            <Terminal className="h-4 w-4" />
-            <AlertTitle>Sucesso</AlertTitle>
-            <AlertDescription>
-                Produto cadastrado com sucesso
-            </AlertDescription>
-        </Alert>
-    }
 
     const convertImageToString = (file: File) => {
         const reader = new FileReader();

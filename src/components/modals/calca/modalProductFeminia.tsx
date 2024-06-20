@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dialog"
 import api from '../../../../api/api';
 import Textarea from '@/components/bootstrap/forms/Textarea';
+import { time } from 'console';
 
 
 export const ModalProductPant: React.FC = () => {
@@ -48,22 +49,17 @@ export const ModalProductPant: React.FC = () => {
             try {
                 await api.post('/pant', data);
 
+                window.location.reload();
+                window.alert('Produto cadastrado com sucesso!');
 
             } catch (error) {
                 console.log(error);
+                window.location.reload();
+                window.alert('Erro ao cadastrar produto');
             }
         },
     });
 
-    function alert() {
-        <Alert>
-            <Terminal className="h-4 w-4" />
-            <AlertTitle>Sucesso</AlertTitle>
-            <AlertDescription>
-                Produto cadastrado com sucesso
-            </AlertDescription>
-        </Alert>
-    }
 
     const convertImageToString = (file: File) => {
         const reader = new FileReader();
