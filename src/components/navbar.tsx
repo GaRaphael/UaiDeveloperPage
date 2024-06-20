@@ -1,4 +1,3 @@
-// Navbar.tsx
 import React from "react";
 import {
   Navbar as MTNavbar,
@@ -83,10 +82,10 @@ export function Navbar() {
         </div>
         <div className="hidden lg:flex items-center">
           <ul className="flex items-center gap-6">
-          <NavItem href="/landing">Início</NavItem>
-          <NavItem href="/catalog">Catálogo</NavItem>
+            <NavItem href="/landing">Início</NavItem>
+            <NavItem href="/catalog">Catálogo</NavItem>
             <ShoppingCart /> {/* Usa o novo componente */}
-
+            <NavItem href="/logout">Sair</NavItem> {/* Botão de sair */}
           </ul>
         </div>
         <IconButton
@@ -110,7 +109,7 @@ export function Navbar() {
             <NavItem href="/landing">Início</NavItem>
             <NavItem href="/catalog">Catálogo</NavItem>
             <ShoppingCart /> {/* Usa o novo componente */}
-
+            <NavItem href="/logout">Sair</NavItem> {/* Botão de sair */}
           </ul>
         </div>
       </Collapse>

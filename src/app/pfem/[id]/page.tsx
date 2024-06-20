@@ -1,10 +1,9 @@
 "use client";
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import api from '../../../../api/api';
 import { Footer, Navbar } from "../../../components";
-import ProductGallery from '../../../components/product/productGallery'
-
+import ProductGallery from '../../../components/product/productGallery';
 
 const ProductSizeBalls: React.FC<{ sizes: any }> = ({ sizes }) => {
   const sizeArray = sizes?.split(',').map((size: any) => size.trim());
@@ -34,9 +33,7 @@ const ProductSizeBalls: React.FC<{ sizes: any }> = ({ sizes }) => {
 };
 
 export default function ProductWomenView() {
-
   const { id } = useParams();
-
   const [product, setProduct] = useState<any>(null);
 
   useEffect(() => {
@@ -53,9 +50,8 @@ export default function ProductWomenView() {
     getProduct();
   }, [id]);
 
-
   const model = product?.model;
-  const image = product?.image;
+  const images = product?.images || []; // Certifique-se de que 'images' seja um array
   const price = product?.price;
   const color = product?.color;
   const size = product?.size;
@@ -71,8 +67,8 @@ export default function ProductWomenView() {
 
       <div className="flex">
         <div className="row">
-          <div className="col-6 ">
-            <ProductGallery images={image} />
+          <div className="col-6">
+            <ProductGallery images={images} />
           </div>
         </div>
         <div className="mt-[130px]">
@@ -81,7 +77,6 @@ export default function ProductWomenView() {
               width: '500px',
               display: 'flex',
             }}>
-
             <h4 style={{
               fontSize: '50px',
               fontWeight: 'SemiBold',
@@ -115,7 +110,6 @@ export default function ProductWomenView() {
               }}
             >
               <div
-
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -134,9 +128,7 @@ export default function ProductWomenView() {
                     border: '1px solid black'
                   }}
                 >
-
                 </div>
-
               </div>
             </div>
           </div>
@@ -150,7 +142,6 @@ export default function ProductWomenView() {
               }}>
               Tamanhos
             </label>
-
             <ProductSizeBalls sizes={size} />
           </div>
 
@@ -167,7 +158,6 @@ export default function ProductWomenView() {
               marginBottom: '30px',
               marginTop: '50px',
               fontFamily: 'Inter',
-
             }}>
             {'R$' + price}
           </p>
@@ -229,8 +219,7 @@ export default function ProductWomenView() {
           </div>
         </div>
       </div >
+      <Footer />
     </>
   );
-};
-
-
+}
