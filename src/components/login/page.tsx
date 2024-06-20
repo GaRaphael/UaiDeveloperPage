@@ -37,7 +37,7 @@ const SignUpForm = ({ onSignUpSuccess, toggleForm }: { onSignUpSuccess: () => vo
       return;
     }
     try {
-      const response = await axios.post('http://localhost:8080/apiv1/signup', formData);
+      const response = await axios.post('http://localhost:3002/apiv1/signup', formData);
       console.log(response.data);
       onSignUpSuccess();
     } catch (error) {
@@ -137,7 +137,7 @@ const ForgotPasswordForm = ({ toggleForm }: { toggleForm: () => void }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/apiv1/forgot-password', { email });
+      const response = await axios.post('http://localhost:3002/apiv1/forgot-password', { email });
       console.log(response.data);
       // Adicione feedback de sucesso para o usuário aqui, se necessário
     } catch (error) {
@@ -201,7 +201,7 @@ const LoginForm = ({ toggleForm, onForgotPassword }: { toggleForm: () => void; o
       return;
     }
     try {
-      const response = await axios.post('http://localhost:8080/apiv1/signin', { email, password });
+      const response = await axios.post('http://localhost:3002/apiv1/signin', { email, password });
       console.log(response.data);
       // Adicione lógica de redirecionamento ou feedback de sucesso aqui
     } catch (error) {
