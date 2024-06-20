@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import api from '../../../../api/api';
 import { Footer, Navbar } from "../../../components";
 import ProductGallery from '../../../components/product/productGallery';
+import { useCart } from '../../../context/cartContext'; 
+import Notification from '../../../components/notification/notification';
+
 
 const ProductSizeBalls: React.FC<{ sizes: any }> = ({ sizes }) => {
   const sizeArray = sizes?.split(',').map((size: any) => size.trim());
@@ -35,6 +38,7 @@ const ProductSizeBalls: React.FC<{ sizes: any }> = ({ sizes }) => {
 export default function ProductWomenView() {
   const { id } = useParams();
   const [product, setProduct] = useState<any>(null);
+  const { addToCart } = useCart(); // Usa o hook do contexto do carrinho
 
   useEffect(() => {
     const getProduct = async () => {
@@ -57,6 +61,23 @@ export default function ProductWomenView() {
   const size = product?.size;
   const composition = product?.composition;
   const description = product?.description;
+
+  const handleAddToCart = () => {
+    if (product) {
+      const uniqueKey = `${product.id}_${color}_${size}`; // Cria uma chave única para o item
+      const cartItem = {
+        id: product.id,
+        name: product.model,
+        image: images[0], // Pega a primeira imagem como exemplo
+        price: product.price,
+        quantity: 1,
+        color: color,
+        size: size,
+        uniqueKey: uniqueKey,
+      };
+      addToCart(cartItem); // Adiciona o item ao carrinho
+    }
+  };
 
   return (
     <>
@@ -176,7 +197,7 @@ export default function ProductWomenView() {
           }}>
             <button style={{
               marginTop: '10px',
-            }}>
+            }} onClick={handleAddToCart}>
               Adicionar ao carrinho
             </button>
           </div>
@@ -218,7 +239,7 @@ export default function ProductWomenView() {
             </p>
           </div>
         </div>
-      </div >
+      </div>
       <Footer />
     </>
   );

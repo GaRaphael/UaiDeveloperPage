@@ -83,7 +83,6 @@ export function Navbar() {
         <div className="hidden lg:flex items-center">
           <ul className="flex items-center gap-6">
             <NavItem href="/landing">Início</NavItem>
-            <NavItem href="/catalog">Catálogo</NavItem>
             <ShoppingCart /> {/* Usa o novo componente */}
             <NavItem href="/logout">Sair</NavItem> {/* Botão de sair */}
           </ul>
@@ -107,7 +106,6 @@ export function Navbar() {
         <div className="container mx-auto mt-4 rounded-lg border-t border-blue-gray-50 bg-white px-6 py-5">
           <ul className="flex flex-col items-center gap-4">
             <NavItem href="/landing">Início</NavItem>
-            <NavItem href="/catalog">Catálogo</NavItem>
             <ShoppingCart /> {/* Usa o novo componente */}
             <NavItem href="/logout">Sair</NavItem> {/* Botão de sair */}
           </ul>

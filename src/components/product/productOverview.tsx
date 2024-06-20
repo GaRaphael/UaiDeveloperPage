@@ -1,4 +1,5 @@
 import ProductGallery from './productGallery'
+import { useCart } from '../../context/cartContext'; // Importa o hook do contexto do carrinho
 
 
 interface Color {

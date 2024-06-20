@@ -44,7 +44,13 @@ const CheckoutPage = () => {
               <h2 className="text-2xl font-bold mb-4">Itens no Carrinho</h2>
               {cart.map(item => (
                 <div key={item.id} className="flex items-center justify-between border-b pb-4 mb-4">
-                  <img src={item.image.src} alt={item.image.alt} className="w-16 h-16 object-cover rounded" />
+                  {item.image && item.image.src ? (
+                    <img src={item.image.src} alt={item.image.alt || 'Imagem do item'} className="w-16 h-16 object-cover rounded" />
+                  ) : (
+                    <div className="w-16 h-16 bg-gray-200 rounded flex items-center justify-center">
+                      <span className="text-gray-400">Sem Imagem</span>
+                    </div>
+                  )}
                   <div className="ml-4 flex-1">
                     <h3 className="text-lg font-semibold">{item.name}</h3>
                     <p className="text-gray-600">Preço: R${item.price.toFixed(2)}</p>

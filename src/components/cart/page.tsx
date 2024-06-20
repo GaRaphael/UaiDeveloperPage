@@ -35,7 +35,6 @@ export function ShoppingCart() {
               <div>
                 {cart.map((item: CartItem) => (
                   <div key={item.id} className="flex justify-between items-center mb-2">
-                    <img src={item.image.src} alt={item.image.alt} className="w-16 h-12 object-cover rounded" />
                     <div className="ml-2">
                       <p className="text-sm font-medium">{item.name}</p>
                       <p className="text-sm">Preço: R${item.price}</p>
