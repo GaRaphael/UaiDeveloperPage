@@ -1,4 +1,3 @@
-// ProductCard.tsx
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useCart, CartItem } from '../../context/cartContext';
@@ -34,6 +33,7 @@ const ProductCard: React.FC<Props> = ({ products }) => {
       alert('Por favor, selecione a cor e o tamanho.');
       return;
     }
+    const uniqueKey = `${product.id}-${options.color}-${options.size}`;
     const cartItem: CartItem = {
       id: product.id,
       name: product.name,
@@ -42,6 +42,7 @@ const ProductCard: React.FC<Props> = ({ products }) => {
       quantity: options.quantity,
       color: options.color,
       size: options.size,
+      uniqueKey, // Atribuindo a chave única
     };
     addToCart(cartItem);
     setNotification({ message: 'Item adicionado ao carrinho com sucesso!', type: 'success' });

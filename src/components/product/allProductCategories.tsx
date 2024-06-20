@@ -24,25 +24,25 @@ const products = [
         id: 3,
         name: 'Colete',
         image: colete.src,
-        price: 'R$ 150,00',
+        price: 'R$ 180,00',
     },
     {
         id: 4,
         name: 'Vestido',
         image: vestido.src,
-        price: 'R$ 150,00',
+        price: 'R$ 250,00',
     },
     {
         id: 5,
         name: 'Terninho',
         image: terninho.src,
-        price: 'R$ 150,00',
+        price: 'R$ 350,00',
     },
     {
         id: 6,
         name: 'Black Tie',
         image: blacktie.src,
-        price: 'R$ 150,00',
+        price: 'R$ 100,00',
     },
 ];
 

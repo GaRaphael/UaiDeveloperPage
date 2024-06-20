@@ -1,11 +1,11 @@
-// ShoppingCart.tsx
+'use client';
 import React, { useState } from "react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { CartItem, useCart } from "../../context/cartContext";
 import Notification from "../notification/notification"; // Componente de notificação
 
 export function ShoppingCart() {
-  const [cartOpen, setCartOpen] = useState(true);
+  const [cartOpen, setCartOpen] = useState(false); // Inicialmente fechado
   const { cart, removeFromCart } = useCart();
   const [notification, setNotification] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
@@ -17,7 +17,6 @@ export function ShoppingCart() {
     removeFromCart(itemId);
     setNotification({ message: 'Item removido do carrinho', type: 'error' });
   }
-
 
   return (
     <>
@@ -38,7 +37,7 @@ export function ShoppingCart() {
                   <div key={item.id} className="flex justify-between items-center mb-2">
                     <img src={item.image.src} alt={item.image.alt} className="w-16 h-12 object-cover rounded" />
                     <div className="ml-2">
-                      <p className="text-sm font-medium  ">{item.name}</p>
+                      <p className="text-sm font-medium">{item.name}</p>
                       <p className="text-sm">Preço: R${item.price}</p>
                       <p className="text-sm">Quantidade: {item.quantity}</p>
                       <p className="text-sm">Tamanho: {item.size}</p>

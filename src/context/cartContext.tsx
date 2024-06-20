@@ -1,6 +1,6 @@
-"use client";
+"use client"; // Certifique-se de que essa linha está presente
 
-import React, { createContext, useContext, useReducer, ReactNode } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
 
 // Define a estrutura de um item no carrinho
 export interface CartItem {
@@ -11,6 +11,7 @@ export interface CartItem {
   quantity: number;
   color: string;
   size: string;
+  uniqueKey: string; //
 }
 
 // Define a estrutura do estado do carrinho
@@ -22,7 +23,8 @@ interface CartState {
 type CartAction =
   | { type: 'ADD_TO_CART'; payload: CartItem }
   | { type: 'REMOVE_FROM_CART'; payload: number }
-  | { type: 'UPDATE_QUANTITY'; payload: { id: number; quantity: number } };
+  | { type: 'UPDATE_QUANTITY'; payload: { id: number; quantity: number } }
+  | { type: 'LOAD_CART'; payload: CartItem[] };
 
 // Função de redução para atualizar o estado do carrinho com base nas ações
 const cartReducer = (state: CartState, action: CartAction): CartState => {
@@ -47,14 +49,11 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
             : item
         ),
       };
+    case 'LOAD_CART':
+      return { ...state, cart: action.payload };
     default:
       return state;
   }
-};
-
-// Estado inicial do carrinho
-const initialCartState: CartState = {
-  cart: [],
 };
 
 // Cria o contexto do carrinho
@@ -72,7 +71,16 @@ const CartContext = createContext<{
 
 // Provedor do contexto do carrinho
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useReducer(cartReducer, initialCartState);
+  const [state, dispatch] = useReducer(cartReducer, {
+    cart: typeof window !== "undefined" && localStorage.getItem('cart')
+      ? JSON.parse(localStorage.getItem('cart')!)
+      : [],
+  });
+
+  // Salva o carrinho no localStorage sempre que ele é atualizado
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(state.cart));
+  }, [state.cart]);
 
   const addToCart = (item: CartItem) => dispatch({ type: 'ADD_TO_CART', payload: item });
   const removeFromCart = (id: number) => dispatch({ type: 'REMOVE_FROM_CART', payload: id });
