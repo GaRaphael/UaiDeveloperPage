@@ -5,6 +5,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import api from '../../../api/api';
+import backgroundImg from '../../../public/image/background_2.jpg';
 
 
 // Componente para o formulário de cadastro
